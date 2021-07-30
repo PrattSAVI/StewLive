@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+    <style>
+
+        body{
+            margin:0;
+            width:100vw;
+        }
+
+        .two-column {
+            display:flex;
+            flex-direction:row;
+        }
+
+        .right-panel{
+            width: 200px;
+            background: crimson;
+        }
+
+        .left-panel{
+            height:100vh;
+            flex-grow: 1;
+            background: cyan;
+        }
+
+        .right-content{
+            padding:10px;
+            display:flex;
+            flex-direction:column;
+        }
+
+        @media only screen and (max-width: 750px) {
+            .two-column {
+                flex-direction:column;
+            }
+            .right-panel{
+                width: 100% !important;
+            }
+            .left-panel{
+                height: 700px!important;
+            }
+
+            .right-content{
+                flex-direction:row;
+            }
+        }
+
+        #mapid{
+            width:100%;
+            height: 100%;
+        }
+
+        img{
+            width:100%;
+        }
+
+        .r{
+            padding:10px;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="two-column">
+        <div class="left-panel">
+            <div id="mapid"></div>
+        </div>
+        <div class="right-panel">
+            <div class="right-content">
+                <div class="r">
+                    <img src="https://picsum.photos/200/200">
+                </div>
+                <div class="r">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, odio praesentium voluptatem voluptates amet est nesciunt tenetur, nobis, dolorum libero cupiditate nulla! Culpa quaerat, nam asperiores natus aut fugit enim!<br><br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, odio praesentium voluptatem voluptates amet est nesciunt tenetur, nobis, dolorum libero cupiditate nulla! Culpa quaerat, nam asperiores natus aut fugit enim!
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+
+<script>
+    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+</script>
+</html>
