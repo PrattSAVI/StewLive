@@ -5,83 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>STEW-MAP LIVE</title>
 
     <script src="https://survey123.arcgis.com/api/jsapi"></script>
     <link rel="stylesheet" href="https://js.arcgis.com/4.20/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.20/"></script>
 
-    <style>
-        body {
-            margin: 0;
-            width: 100vw;
-            max-height: 100vh;
-            overflow-y: hidden;
-        }
-        
-        .two-column {
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-        }
-        
-        .left-panel {
-            width: 600px;
-            overflow-y: auto;
-        }
-        
-        .right-panel {
-            height: 100vh;
-            flex-grow: 1;
-        }
-        
-        @media only screen and (max-width: 768px) {
-            .two-column {
-                flex-direction: column;
-            }
-            .right-panel {
-                width: 100% !important;
-                height: 400px!important;
-            }
-            .left-panel {
-                width: 100% !important;
-                height: 50%!important;
-            }
-            #viewDiv {
-                margin-top: 10px!important;
-            }
-        }
-        
-        #viewDiv {
-            padding: 0;
-            margin: 0;
-            height: 100%;
-            width: 100%;
-        }
-        
-        .header {
-            padding: 30px 10px 10px 10px;
-            display: flex;
-            flex-direction: row;
-        }
-        
-        img {
-            width: 42px;
-            height: 45px;
-            margin-right: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 
 </head>
 
 <body>
-
     <div class="header">
-        <div>
+        <div class="logo-holder">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_the_United_States_Forest_Service.svg/1082px-Logo_of_the_United_States_Forest_Service.svg.png" alt="logo shield">
         </div>
-        <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi assumenda, consequatur minus dicta illum illo expedita nemo distinctio, aut delectus eveniet, molestiae nam saepe consequuntur alias beatae laboriosam pariatur facere.
+        <div class="text-holder">
+            <h2>STEW-MAP Live: Bridger-Teton National Forest</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi assumenda, consequatur minus dicta illum illo expedita nemo distinctio, aut delectus eveniet.
         </div>
     </div>
     <div class="two-column">
@@ -94,67 +36,5 @@
     </div>
 
 </body>
-
-<script>
-    require(["esri/config", "esri/views/MapView", "esri/Map", "esri/WebMap", "esri/layers/FeatureLayer"], (esriConfig, MapView, Map, WebMap, FeatureLayer) => {
-
-
-
-        // intake form webmap id: 2a74f30f958f4b13be2ee205312491f0
-        // sample public map: f844baf501dc49988f795a3f19c00857
-        esriConfig.apiKey = "AAPK2e6f6235b63e4b53a08da4f04dc20b93BbuNAZ9o1yNKUN5Qgf2k8QykIDjHmdEyvvtYGXGoDcoWONg06lMrGiHkpdxKv5-Q";
-
-        //https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/service_8a7f4dd5ead5437594813e8983d7be98/FeatureServer/0
-        //intake form point data: 45cb74b897bc4319bd44dba577c5597e
-        //View: d72420b23d7441eab4a9422b6d1bbc71
-        const layer = new FeatureLayer({
-            url: "https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/service_8a7f4dd5ead5437594813e8983d7be98/FeatureServer/0",
-        });
-
-        const myMap = new Map({
-            basemap: "osm",
-            layers: [layer]
-        });
-
-        // Create a MapView instance (for 2D viewing) and reference the map instance
-        let view = new MapView({
-            map: myMap, // References a Map instance
-            container: "viewDiv", // References the ID of a DOM element
-            zoom: 5,
-            center: [-110.2425, 43.925] //43.92578405978546, -110.2425302557648
-        });
-
-        var webform = new Survey123WebForm({
-            clientId: "PHntZUXswx2hhkP0", // Oath only is allowed in local host 50905 for now.
-            container: "formDiv",
-            itemId: "f844baf501dc49988f795a3f19c00857",
-            hideElements: ["navbar", "header", "footer"], // Hide cosmetic elements
-            onFormLoaded: (data) => { // Place point to current location
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        webform.setGeopoint({
-                            x: position.coords.longitude,
-                            y: position.coords.latitude
-                        });
-                    }, () => {
-                        console.error('Unable to retrieve your location');
-                        webform.setGeopoint({ // If current location is not know, go to the center
-                            x: -110.2425,
-                            y: 43.925
-                        });
-                    });
-                } else {
-                    console.error('Geolocation is not supported by your browser');
-                }
-            },
-            onFormSubmitted: (data) => { // Show me the submitted data
-                console.log(data.surveyFeatureSet.features[0].attributes)
-                console.log(data.surveyFeatureSet.features[0].geometry)
-            }
-
-
-        })
-    });
-</script>
 
 </html>
