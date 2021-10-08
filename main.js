@@ -1,8 +1,12 @@
 let fl_url = "https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/service_8a7f4dd5ead5437594813e8983d7be98/FeatureServer/0";
 
+var esri_key = config.esri_key;
+var clientId = config.clientId;
+var itemId = config.itemId;
+
 require(["esri/config", "esri/views/MapView", "esri/Map", "esri/WebMap", "esri/layers/FeatureLayer"], (esriConfig, MapView, Map, WebMap, FeatureLayer) => {
 
-    esriConfig.apiKey = "AAPK2e6f6235b63e4b53a08da4f04dc20b93BbuNAZ9o1yNKUN5Qgf2k8QykIDjHmdEyvvtYGXGoDcoWONg06lMrGiHkpdxKv5-Q";
+    esriConfig.apiKey = esri_key;
 
     // Pop up Template
     var template = {
@@ -32,9 +36,9 @@ require(["esri/config", "esri/views/MapView", "esri/Map", "esri/WebMap", "esri/l
     });
 
     var webform = new Survey123WebForm({
-        clientId: "PHntZUXswx2hhkP0", // Oath only is allowed in local host 50905 for now.
+        clientId: clientId, // Oath only is allowed in local host 50905 for now.
         container: "formDiv",
-        itemId: "f844baf501dc49988f795a3f19c00857",
+        itemId: itemId,
         hideElements: ["navbar", "header", "footer"], // Hide cosmetic elements
         onFormLoaded: (data) => { // Place point to current location
             if (navigator.geolocation) {
