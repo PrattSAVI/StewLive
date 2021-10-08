@@ -1,3 +1,5 @@
+import { config } from "./config.js";
+
 let fl_url = "https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/service_8a7f4dd5ead5437594813e8983d7be98/FeatureServer/0";
 
 var esri_key = config.esri_key;
