@@ -45,6 +45,46 @@ body {
     flex-direction: row;
 }
 
+.intro-text {
+    font-size: 0.8rem;
+}
+
+.hover-up {
+    font-size: 0.8rem;
+    color: #777;
+    font-style: italic;
+}
+
+#button {
+    cursor: pointer;
+}
+
+.paperwork {
+    padding: 10px;
+    top: 250px;
+    left: 120px;
+    position: absolute;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.page {
+    visibility: visible;
+}
+
+.mobile {
+    visibility: hidden;
+    height: 0px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
 img {
     width: 90px;
     height: 100px;
@@ -83,5 +123,13 @@ h2 {
     }
     #viewDiv {
         margin-top: 10px!important;
+    }
+    .page {
+        visibility: hidden!important;
+        height: 0px;
+    }
+    .mobile {
+        visibility: visible!important;
+        height: auto;
     }
 }

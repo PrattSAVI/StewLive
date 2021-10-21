@@ -1,5 +1,29 @@
 import { config } from "./config.js";
 
+//PopUp
+document.getElementById("button").onclick = displayPop;
+
+function displayPop(e) {
+    let el = document.getElementById("act");
+
+    if (el.classList[1] === 'hidden') {
+
+        let button = document.getElementById("button");
+        let h = e.target.offsetTop;
+
+        el.style.top = (h + 15) + "px";
+        el.classList.remove('hidden');
+        el.classList.add('visible');
+
+
+
+
+    } else if (el.classList[1] === 'visible') {
+        el.classList.remove('visible');
+        el.classList.add('hidden');
+    }
+}
+
 let fl_url = "https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/service_8a7f4dd5ead5437594813e8983d7be98/FeatureServer/0";
 
 var esri_key = config.esri_key;
