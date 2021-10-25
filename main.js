@@ -2,6 +2,15 @@ import { config } from "./config.js";
 
 //PopUp
 document.getElementById("button").onclick = displayPop;
+document.getElementById("closer").onclick = ClosePop;
+
+function ClosePop(e) {
+    let el = document.getElementById("act");
+
+    el.classList.remove('visible');
+    el.classList.add('hidden');
+}
+
 
 function displayPop(e) {
     let el = document.getElementById("act");
@@ -14,9 +23,6 @@ function displayPop(e) {
         el.style.top = (h + 15) + "px";
         el.classList.remove('hidden');
         el.classList.add('visible');
-
-
-
 
     } else if (el.classList[1] === 'visible') {
         el.classList.remove('visible');
